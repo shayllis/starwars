@@ -1,0 +1,35 @@
+// Theme (Colors)
+$primary: #0ab463;
+$secondary: #c4c4c4;
+$gray-800: #1f2023;
+$gray-100: #ededed;
+$gray-300: #dadada;
+$bg-color: #ededed;
+$body-bg: $gray-100;
+$light: $gray-100;
+
+// Card
+$card-border-radius: 4px;
+$card-border-color: $gray-300;
+$card-spacer-y: 1.87rem; // 30px
+$card-spacer-x: 1.87rem; // 30px
+
+// Font
+$font-size-base: 0.875rem; // 14px
+$h5-font-size: 18px;
+$h6-font-size: 16px;
+$navbar-padding-y: 14px;
+$font-family-sans-serif: "Montserrat", BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+// Generals
+$border-width: 2px;
+$border-radius:               .65rem;
+$border-radius-lg:            .65rem;
+$border-radius-sm:            .65rem;
+
+// Form
+$btn-padding-x: 20px;
+$btn-border-radius: 17px;
+$input-border-width: 1px;
+$input-border-radius: 4px;
+$list-group-item-padding-y: 10px;
