@@ -21,7 +21,7 @@ const movies  = {
       let res = await axios.get('https://swapi.dev/api/films/', {
           params: {search : query || ''}
         });
-        
+      
       commit('setMovies', res.data);
     }
   }

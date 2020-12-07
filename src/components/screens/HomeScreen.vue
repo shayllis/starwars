@@ -4,7 +4,7 @@
       <b-row>
         <b-col cols="12" md="4">
           <b-card class="border-top-1 mb-3">
-            <b-form v-on:submit.prevent="search">
+            <b-form v-on:submit.prevent="sendForm">
               <b-form-group>
                 <label class="font-weight-600 mb-0">What are you searching for?</label>
               </b-form-group>
@@ -66,6 +66,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import statistics from '../../utils/statistics.js'
 
 export default {
   name: 'Home',
@@ -100,12 +101,12 @@ export default {
     ...mapState('movies', ['movies']),
   },
   created () {
-
+    this.search();
   },
   data() {
     return {
-      category: 'people',
-      query: '',
+      category: this.$route.query.category || 'people',
+      query: this.$route.query.q || '',
       options: [
         { text: 'People', value: 'people', placeholder: 'e.g. Chewbacca, Yoda, Boba Fett' },
         { text: 'Movies', value: 'movies', placeholder: 'e.g. The Phantom Menace, The Clone Wars, The Jedi Return' },
@@ -113,14 +114,21 @@ export default {
     }
   },
   methods: {
+    sendForm: function () {
+      this.$router.push({ path: '/', query: { category: this.category, q: this.query }})
+        .catch(()=>{});
+      this.search();
+    },
     search: async function () {
       if (!this.query || !this.category)
         return ;
 
       this.$vueLoading.startLoading();
       await this.$store.dispatch(`${this.category}/getAll`, {query: this.query});
+      statistics.event('search', this.category, {q: this.query});
+
       this.$vueLoading.endLoading();
     },
-  }
+  },
 }
 </script>
